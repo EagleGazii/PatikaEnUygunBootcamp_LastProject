@@ -69,6 +69,17 @@ Ready for this demo | task
 5 | admin route-design
 6 | DataFactory for all entities (add fake data to db)
 
+Homeworks: 
+ -  [Week1](https://github.com/EnUygunPatikaBootCamp/week1-EagleGazii)
+ -  [Week2](https://github.com/EnUygunPatikaBootCamp/week2-EagleGazii)
+ -  [Week3](https://github.com/EnUygunPatikaBootCamp/week3-EagleGazii)
+ -  [Week4](https://github.com/EnUygunPatikaBootCamp/week4-EagleGazii)
+ -  [Week5](https://github.com/EnUygunPatikaBootCamp/week5-EagleGazii)
+ -  [Week6](https://github.com/EnUygunPatikaBootCamp/week6-EagleGazii)
+ 
+ 
+
+
 I know I didn't finish the project as you want and when you want but I try it.
 ### Thank you [Patika](https://www.patika.dev/) and [EnUygun](https://www.linkedin.com/company/wingieenuygungroup/?originalSubdomain=tr) for **PHP SYMFONY** bootcamp. All the best!.  
 
