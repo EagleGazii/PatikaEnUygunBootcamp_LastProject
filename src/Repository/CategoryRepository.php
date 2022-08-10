@@ -39,6 +39,19 @@ class CategoryRepository extends ServiceEntityRepository
         }
     }
 
+    public function getCategories($parentID){
+        $entityManager = $this->getEntityManager();
+
+
+        $query = $entityManager->createQuery(
+            'SELECT c.id, c.name
+            FROM App\Entity\Category c
+            WHERE c.parentID = :id and c.status=1'
+        )->setParameter('id', $parentID);
+
+        // returns an array of Product objects
+        return $query->getResult();
+    }
 //    /**
 //     * @return Category[] Returns an array of Category objects
 //     */

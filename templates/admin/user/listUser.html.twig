@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Users{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="container">
+        <h1>Users</h1>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Roles</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Address</th>
+                <th scope="col"></th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr class="table-warning" id="{{ user.id }}">
+                    <td>{{ user.firstName }}</td>
+                    <td>{{ user.lastName }}</td>
+                    <td>{{ user.roles|join(',') }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.phoneNo }}</td>
+                    <td>{{ user.address }}</td>
+
+
+                    <td><a href="{{ path('app_admin_edit_user', { 'id': user.id }) }}">Edit</a></td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

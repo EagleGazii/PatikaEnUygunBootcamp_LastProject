@@ -45,6 +45,7 @@ class Product
     private Collection $categories;
 
     #[ORM\ManyToMany(targetEntity: Order::class, mappedBy: 'products')]
+
     private Collection $orders;
 
     public function __construct()

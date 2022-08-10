@@ -39,6 +39,24 @@ class OrderRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     * @param int $approved
+     * @return Order[]
+     */
+    public function getOrders(int $approved):array{
+
+        $entityManager = $this->getEntityManager();
+
+
+        $query = $entityManager->createQuery(
+            'SELECT o.id ,d.firstName, d.lastName, d.address, u.email, o.quantity, o.totalPrice, o.orderedAt
+            FROM App\Entity\Order o,App\Entity\User u, App\Entity\Detail d
+            WHERE u.details = d.id and o.user = u.id and o.approved = :approved and o.actived = 1'
+        )->setParameter('approved', $approved);
+
+        // returns an array of Product objects
+        return $query->getResult();
+    }
 //    /**
 //     * @return Order[] Returns an array of Order objects
 //     */

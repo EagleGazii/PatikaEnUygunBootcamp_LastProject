@@ -38,9 +38,9 @@ final class CategoryFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
-            'name' => self::faker()->text(),
-            'status' => self::faker()->boolean(),
-            'parentID' => self::faker()->numberBetween(0,3),
+            'name' => self::faker()->text(10),
+            'status' => self::faker()->boolean(90),
+            'parentID' => self::faker()->numberBetween(0,4),
             'createdAt' => self::faker()->dateTimeBetween('-30 days','now')
         ];
     }

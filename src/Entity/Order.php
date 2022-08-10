@@ -40,7 +40,13 @@ class Order
     private ?User $user = null;
 
     #[ORM\ManyToMany(targetEntity: Product::class, inversedBy: 'orders')]
+    #[ORM\JoinTable(name: 'order_product')]
+    #[ORM\JoinColumn(name: 'product_id',referencedColumnName: "id")]
+    #[ORM\InverseJoinColumn(name: "order_id", referencedColumnName: "id")]
+
     private Collection $products;
+
+
 
     public function __construct()
     {
@@ -156,6 +162,36 @@ class Order
     public function removeProduct(Product $product): self
     {
         $this->products->removeElement($product);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, OrderProduct>
+     */
+    public function getOrderProducts(): Collection
+    {
+        return $this->orderProducts;
+    }
+
+    public function addOrderProduct(OrderProduct $orderProduct): self
+    {
+        if (!$this->orderProducts->contains($orderProduct)) {
+            $this->orderProducts->add($orderProduct);
+            $orderProduct->setOrders($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrderProduct(OrderProduct $orderProduct): self
+    {
+        if ($this->orderProducts->removeElement($orderProduct)) {
+            // set the owning side to null (unless already changed)
+            if ($orderProduct->getOrders() === $this) {
+                $orderProduct->setOrders(null);
+            }
+        }
 
         return $this;
     }

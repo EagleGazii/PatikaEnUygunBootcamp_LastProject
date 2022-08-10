@@ -39,6 +39,21 @@ class ProductRepository extends ServiceEntityRepository
         }
     }
 
+    public function getAllProducts($status){
+        $entityManager = $this->getEntityManager();
+
+
+        $query = $entityManager->createQuery(
+            'SELECT p.id, p.name, p.brand, p.description, p.stock, p.price, p.createdAt, p.updatedAt
+            FROM App\Entity\Product p
+            WHERE p.status = :status'
+        )->setParameter('status', $status);
+        // if status is 0 -> false that means the product is deleted, or not visible in any route, admin route too
+
+        // returns an array of Product objects
+        return $query->getResult();
+    }
+
 //    /**
 //     * @return Product[] Returns an array of Product objects
 //     */
